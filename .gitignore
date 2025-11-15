@@ -1,0 +1,139 @@
+# ============================================
+# SECRETS (NEVER COMMIT!)
+# ============================================
+.env
+.env.local
+.env.*.local
+
+# ============================================
+# Python
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ============================================
+# Virtual Environments
+# ============================================
+venv/
+ENV/
+env/
+.venv
+
+# ============================================
+# IDE
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ============================================
+# OS
+# ============================================
+.DS_Store
+Thumbs.db
+
+# ============================================
+# Logs
+# ============================================
+*.log
+logs/
+
+# ============================================
+# Testing
+# ============================================
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ============================================
+# Data Files (cached/generated - not needed in repo)
+# ============================================
+all_messages.json
+full_messages.json
+sample_messages.json
+messages_cache.json
+*.json
+!package.json
+!package-lock.json
+!render.yaml
+
+# ============================================
+# Internal Documentation (not for submission)
+# ============================================
+_PROJECT_COMPLETE.md
+PROJECT_STRUCTURE.md
+SUMMARY.md
+GETTING_STARTED.md
+FILES_TO_DEPLOY.md
+SUBMISSION_CHECKLIST.md
+WHAT_REVIEWERS_SEE.md
+FINAL_SUBMISSION_FILES.md
+MY_LEARNING_JOURNEY.md
+DEPLOY_NOW_RAILWAY.md
+VIDEO_DEMO_SCRIPT.md
+data_insights.md
+DESIGN.md
+
+# ============================================
+# Deployment Guides (internal - too detailed for submission)
+# ============================================
+DEPLOYMENT.md
+DEPLOY_RAILWAY_GUIDE.md
+DEPLOY_TO_GCP.md
+deploy_render_direct.md
+DEPLOY_FLYIO_STEPS.md
+deploy_gcp.sh
+fly.toml
+
+# ============================================
+# Helper Scripts (internal use only)
+# ============================================
+push_to_github.ps1
+analyze_full_data.py
+final_test.py
+start_with_openai.py
+test_api.py
+quick_test.py
+
+# ============================================
+# Analysis Outputs (temporary)
+# ============================================
+data_analysis.txt
+analysis_output.txt
+
+# ============================================
+# Learning Materials (internal training)
+# ============================================
+learning/
+
+# ============================================
+# Temporary Files
+# ============================================
+*.tmp
+temp/
+tmp/
+
+# ============================================
+# Optional Files (uncomment to hide)
+# ============================================
+LICENSE

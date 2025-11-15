@@ -1,0 +1,107 @@
+# ============================================
+# Version Control
+# ============================================
+.git
+.gitignore
+.github
+
+# ============================================
+# Python Cache
+# ============================================
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info
+dist
+build
+
+# ============================================
+# Virtual Environments
+# ============================================
+.env
+.venv
+venv/
+ENV/
+env/
+
+# ============================================
+# IDE
+# ============================================
+.vscode
+.idea
+*.swp
+*.swo
+
+# ============================================
+# Logs
+# ============================================
+*.log
+logs/
+
+# ============================================
+# Documentation (not needed in Docker image)
+# ============================================
+*.md
+!README.md
+# Keep README for reference, exclude others
+
+# ============================================
+# Learning Materials
+# ============================================
+learning/
+
+# ============================================
+# Data Files (cached - not needed in image)
+# ============================================
+*.json
+!package.json
+!package-lock.json
+all_messages.json
+full_messages.json
+sample_messages.json
+messages_cache.json
+
+# ============================================
+# Test & Helper Scripts (not needed in production)
+# ============================================
+analyze_full_data.py
+final_test.py
+start_with_openai.py
+test_api.py
+quick_test.py
+push_to_github.ps1
+
+# ============================================
+# Deployment Configs (not needed in image)
+# ============================================
+fly.toml
+render.yaml
+deploy_gcp.sh
+
+# ============================================
+# Internal Documentation
+# ============================================
+_PROJECT_COMPLETE.md
+PROJECT_STRUCTURE.md
+SUMMARY.md
+GETTING_STARTED.md
+FILES_TO_DEPLOY.md
+DEPLOY_*.md
+
+# ============================================
+# Testing
+# ============================================
+.pytest_cache
+.coverage
+htmlcov/
+
+# ============================================
+# Temporary Files
+# ============================================
+*.tmp
+temp/
+tmp/
