@@ -31,6 +31,6 @@ ENV PYTHONUNBUFFERED=1
 EXPOSE 8080
 
 # Run with gunicorn for production
-# Use shell form to allow $PORT variable expansion
-CMD gunicorn --bind 0.0.0.0:${PORT:-8080} --workers 2 --threads 2 --timeout 120 --log-level info app:app
+# Use exec form with shell to properly expand PORT variable
+CMD ["/bin/sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-8080} --workers 2 --threads 2 --timeout 120 --log-level info app:app"]
 
