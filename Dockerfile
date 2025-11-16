@@ -24,17 +24,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py .
 COPY qa_engine.py .
 
-# Expose port
-EXPOSE 8080
-
 # Set environment variables
-ENV PORT=8080
 ENV PYTHONUNBUFFERED=1
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD python -c "import requests; requests.get('http://localhost:8080/health')"
+# Expose port (Railway provides dynamic PORT)
+EXPOSE 8080
 
 # Run with gunicorn for production
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "2", "--threads", "2", "--timeout", "120", "--log-level", "info", "app:app"]
+# Use shell form to allow $PORT variable expansion
+CMD gunicorn --bind 0.0.0.0:${PORT:-8080} --workers 2 --threads 2 --timeout 120 --log-level info app:app
 
