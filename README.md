@@ -45,8 +45,8 @@ curl -X POST http://localhost:8080/ask \
 
 ```bash
 # 1. Clone and install
-git clone https://github.com/yourusername/qa-system.git
-cd qa-system
+git clone https://github.com/yourusername/question-answer-system.git
+cd question-answer-system
 pip install -r requirements.txt
 
 # 2. Add your API key

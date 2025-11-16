@@ -9,7 +9,6 @@ from typing import List, Dict, Optional, Tuple
 from collections import defaultdict
 import requests
 from rapidfuzz import fuzz
-import numpy as np
 
 logger = logging.getLogger(__name__)
 
