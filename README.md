@@ -92,7 +92,7 @@ Get system statistics.
 
 I evaluated 5 different approaches before choosing RAG with LLM:
 
-### 1. RAG with LLM (Selected) ✅
+### 1. RAG with LLM
 **How**: Retrieve relevant messages → Pass to GPT-4 → Generate answer
 
 **Pros**: Handles complex reasoning, synthesizes info from multiple messages, robust to question variations
@@ -137,8 +137,6 @@ I evaluated 5 different approaches before choosing RAG with LLM:
 
 **Verdict**: Good for search, not for QA.
 
-**Full details**: See [DESIGN.md](DESIGN.md)
-
 ---
 
 ## Bonus 2: Data Insights & Anomalies
@@ -172,90 +170,13 @@ Messages use relative dates ("next Monday", "this Friday") without absolute time
 **5. Uniform Message Lengths**
 All messages are 46-88 characters (avg 65). Likely synthetic data or truncated messages. Doesn't affect functionality.
 
-**Full analysis**: See [data_insights.md](data_insights.md)
-
 ---
 
 ## Deployment
 
-### Option 1: Railway (Easiest, Free)
 1. Sign up at [railway.app](https://railway.app)
 2. New Project → Deploy from GitHub
 3. Add env var: `OPENAI_API_KEY`
 4. Deploy → Get your public URL
 
-### Option 2: Docker
-```bash
-docker build -t qa-system .
-docker run -d -p 8080:8080 -e OPENAI_API_KEY=your-key qa-system
-```
-
-### Option 3: Google Cloud Run
-```bash
-gcloud builds submit --tag gcr.io/PROJECT_ID/qa-system
-gcloud run deploy qa-system --image gcr.io/PROJECT_ID/qa-system \
-  --set-env-vars OPENAI_API_KEY=your-key
-```
-
-Other options: Render, Fly.io, Vercel, PythonAnywhere (all have free tiers)
-
 ---
-
-## Project Structure
-
-```
-qa-system/
-├── app.py              # Flask API (main entry point)
-├── qa_engine.py        # QA logic (RAG + LLM)
-├── requirements.txt    # Python dependencies
-├── Dockerfile          # Container config
-├── .env.example        # Environment template
-├── README.md           # This file
-├── DESIGN.md           # Detailed design (Bonus 1)
-└── data_insights.md    # Data analysis (Bonus 2)
-```
-
----
-
-## How It Works
-
-**Architecture**: Flask API → Data fetcher (with retry logic) → QA Engine (RAG) → LLM (GPT-4)
-
-**Key features**:
-- Fetches all 3,349 messages on startup
-- Fuzzy name matching (handles "Amira" → "Amina")
-- Retry logic for API errors
-- In-memory caching for fast responses
-- Falls back to keyword matching if no API key
-
-**Performance**:
-- Startup: ~15-25 seconds (fetches all messages)
-- Response time: 1-3 seconds with GPT-4, <100ms fallback mode
-- Handles concurrent requests with gunicorn
-
-**Tech stack**: Flask, OpenAI GPT-4, RapidFuzz, Docker, Gunicorn
-
----
-
-## Configuration
-
-Create a `.env` file:
-
-```bash
-API_BASE_URL=https://november7-730026606190.europe-west1.run.app/messages/
-OPENAI_API_KEY=your-key-here
-PORT=8080
-DEBUG=False
-```
-
----
-
-## Source Data
-
-**API**: https://november7-730026606190.europe-west1.run.app/docs
-
-The system fetches member messages from this public API using pagination (`skip` and `limit` params) and handles intermittent errors with retry logic.
-
----
-
-Built with Python, Flask, and GPT-4. Demonstrates RAG architecture, LLM integration, and production-ready API development.
